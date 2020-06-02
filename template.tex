@@ -1,0 +1,87 @@
+\documentclass[12pt, a4]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{changepage}
+
+\usepackage{fontspec}
+\setmonofont{Consolas}
+\setmainfont{Latin Modern Roman}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{turquoise}{rgb}{0.07, 0.47, 0.51}
+\definecolor{vlightgrey}{rgb}{0.9,0.9,0.9}
+
+\lstset{
+	language=SQL,
+	frame=none,
+	framexleftmargin=3pt,
+	aboveskip=5mm,
+	belowskip=5mm,
+	showstringspaces=false,
+	columns=flexible, 
+	numbers=left,
+	basicstyle={\ttfamily},
+	numberstyle=\small\color{gray},
+	keywordstyle=\color{turquoise},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=4
+}
+
+\setlength{\headsep}{5pt}
+\pagenumbering{gobble}
+
+\begin{document}
+
+{\color{turquoise}
+\begin{center} {\huge MySQL Program \#<prog>\par } \end{center}
+}
+\medskip
+
+\hrulefill
+
+\bigskip
+
+{\color{turquoise}\large Aim \par}
+\medskip
+\begin{adjustwidth}{2cm}{}
+	<aim>
+\end{adjustwidth}
+\bigskip
+\medskip
+
+{\color{turquoise}\large Query \par}
+\medskip
+\begin{adjustwidth}{2cm}{}
+	\begin{lstlisting}
+<query>
+	\end{lstlisting}
+\end{adjustwidth}
+
+{\color{turquoise}\large Output \par}
+\medskip
+{
+\begin{center}
+\centering
+\begin{BVerbatim}
+<output>
+\end{BVerbatim}
+\end{center}
+}
+\bigskip
+\medskip
+
+{\color{turquoise}\large Result \par}
+\medskip
+\begin{adjustwidth}{2cm}{}
+	MySQL query executed successfully
+\end{adjustwidth}
+
+\end{document}
