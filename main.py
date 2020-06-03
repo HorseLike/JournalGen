@@ -28,11 +28,11 @@ def main():
             while True:
                 curr_pos = queries.tell()
                 next_line = queries.readline()
-                if next_line[0] == '#':
+                if next_line.lstrip()[0] == '#':
                     queries.seek(curr_pos)
                     break
-                elif next_line[0] == ':':
-                    undo += next_line
+                elif next_line.lstrip()[0] == ':':
+                    undo += next_line.lstrip()
                 else:
                     query += next_line
             

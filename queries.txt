@@ -1,173 +1,173 @@
 #Display all the information of the emp table.
-SELECT * FROM emp;
+	SELECT * FROM emp;
 #Display unique jobs from EMP table.
-SELECT DISTINCT job FROM emp;
+	SELECT DISTINCT job FROM emp;
 #List the details of the emps in asc order of their salaries.
-SELECT * FROM emp ORDER BY sal DESC;
+	SELECT * FROM emp ORDER BY sal DESC;
 #List the details of the emps in asc order of the Deptnos and desc of Jobs.
-SELECT * FROM emp ORDER BY deptno ASC, job DESC;
+	SELECT * FROM emp ORDER BY deptno ASC, job DESC;
 # Display all the unique job groups in the descending order
-SELECT DISTINCT job FROM emp ORDER BY job DESC;
+	SELECT DISTINCT job FROM emp ORDER BY job DESC;
 #Display all the details of all ‘Mgrs’
-SELECT * FROM emp WHERE job = 'manager';
+	SELECT * FROM emp WHERE job = 'manager';
 #List the emps who joined before 1981.
-SELECT * FROM emp WHERE YEAR(hiredate) < 1981
+	SELECT * FROM emp WHERE YEAR(hiredate) < 1981
 #List the Empno, Ename, Sal, Annual Sal of all Employees in the ASC order of AnnSal.
-SELECT empno, ename, sal, sal*12 as 'Annual Sal' FROM emp ORDER BY sal * 12 DESC;
+	SELECT empno, ename, sal, sal*12 as 'Annual Sal' FROM emp ORDER BY sal * 12 DESC;
 #Display the empno , ename, job, hiredate, except of all Mgrs
-SELECT empno, ename, job, hiredate FROM emp WHERE job != "MANAGER";
+	SELECT empno, ename, job, hiredate FROM emp WHERE job != "MANAGER";
 #List the empno, ename, sal, of all emps working for Mgr 7839.
-SELECT empno, ename, sal FROM emp WHERE mgr = 7839;
+	SELECT empno, ename, sal FROM emp WHERE mgr = 7839;
 #List the emps in the asc order of Designations
-SELECT ename FROM emp ORDER BY job ASC;
+	SELECT ename FROM emp ORDER BY job ASC;
 #Display the details of the emps whose Comm is more than their sal.
-SELECT * FROM emp WHERE comm > sal;
+	SELECT * FROM emp WHERE comm > sal;
 #List the emps who are either ‘CLERK’ or ‘ANALYST’ in the desc order
-SELECT * FROM emp WHERE job = 'CLERK' OR job = 'ANALYST' ORDER BY sal DESC;
+	SELECT * FROM emp WHERE job = 'CLERK' OR job = 'ANALYST' ORDER BY sal DESC;
 #List the emps who are working for the deptno 10 and 20
-SELECT * FROM emp WHERE deptno = 10 OR deptno = 20;
+	SELECT * FROM emp WHERE deptno = 10 OR deptno = 20;
 #List the emps who are joined in the year 1981
-SELECT * FROM emp WHERE YEAR(hiredate) = 1981;
+	SELECT * FROM emp WHERE YEAR(hiredate) = 1981;
 #List the emps who are joined in the month of Aug 1980
-SELECT * FROM emp WHERE YEAR(hiredate) = 1980 AND MONTH(hiredate) = 8;
+	SELECT * FROM emp WHERE YEAR(hiredate) = 1980 AND MONTH(hiredate) = 8;
 #List the emps whose annul sal (sal*12)ranging from 22000 and 45000
-SELECT * FROM emp WHERE sal*12 BETWEEN 22000 AND 45000;
+	SELECT * FROM emp WHERE sal*12 BETWEEN 22000 AND 45000;
 #List the emps those are having five characters in their names.
-SELECT * FROM emp WHERE ename LIKE '_____';
+	SELECT * FROM emp WHERE ename LIKE '_____';
 #List the enames those are starting with ‘s’ and with fire characters
-SELECT * FROM emp WHERE ename LIKE 's____';
+	SELECT * FROM emp WHERE ename LIKE 's____';
 #List the emps those are having four chars and third char must be ‘r’
-SELECT * FROM emp WHERE ename LIKE '__r_';
+	SELECT * FROM emp WHERE ename LIKE '__r_';
 #List the 5 character names starting with ‘s’ and ending with ‘h’
-SELECT * FROM emp WHERE ename LIKE 's___h';
+	SELECT * FROM emp WHERE ename LIKE 's___h';
 #List the emps who joined in January
-SELECT * FROM emp WHERE MONTH(hiredate) = 1;
+	SELECT * FROM emp WHERE MONTH(hiredate) = 1;
 #List the emps who joined in the month of which second character is ‘a’
 -- January, March and May
-SELECT * FROM emp WHERE MONTH(hiredate) IN (1,3,5) ; 
+	SELECT * FROM emp WHERE MONTH(hiredate) IN (1,3,5) ; 
 #List the emps whose names having a character set ‘ll’ together
-SELECT * FROM emp WHERE ename LIKE '%ll%';
+	SELECT * FROM emp WHERE ename LIKE '%ll%';
 #List the emps those who joined in 80’s
-SELECT * FROM emp WHERE YEAR(hiredate) BETWEEN 1980 AND 1989;
+	SELECT * FROM emp WHERE YEAR(hiredate) BETWEEN 1980 AND 1989;
 #List the emps who does not belong to deptno 20
-SELECT * FROM emp WHERE deptno != 20;
+	SELECT * FROM emp WHERE deptno != 20;
 #List all the emps except ‘president’ and ‘Mgr’ in asc order of salaries
-SELECT * FROM emp WHERE job NOT IN ('manager', 'president') ORDER BY sal ASC;
+	SELECT * FROM emp WHERE job NOT IN ('manager', 'president') ORDER BY sal ASC;
 #List the emps who joined in before or after 1981
-SELECT * FROM emp WHERE YEAR(hiredate) != 1981;
+	SELECT * FROM emp WHERE YEAR(hiredate) != 1981;
 #List the emps who joined in any year but not belongs to the month of March
-SELECT * FROM emp WHERE MONTH(hiredate) != 3;
+	SELECT * FROM emp WHERE MONTH(hiredate) != 3;
 #List all the clerks of deptno 20.
-SELECT * FROM emp WHERE deptno = 20 AND job = 'clerk';
+	SELECT * FROM emp WHERE deptno = 20 AND job = 'clerk';
 #List the emps of deptno 30 and 10 joined in the year 1981
-SELECT * FROM emp WHERE deptno IN (30,10) AND YEAR(hiredate) = 1981;
+	SELECT * FROM emp WHERE deptno IN (30,10) AND YEAR(hiredate) = 1981;
 #Display the details of ‘Smith’
-SELECT * FROM emp WHERE ename = 'smith';
+	SELECT * FROM emp WHERE ename = 'smith';
 #Increase the salary of all the employees by 15% .
-UPDATE emp SET sal = sal * 1.15;
-:UPDATE emp SET sal = sal /1.15
+	UPDATE emp SET sal = sal * 1.15;
+	:UPDATE emp SET sal = sal /1.15
 #Change the name of ALLEN to BEN
-UPDATE emp SET ename = 'BEN' WHERE ename = 'ALLEN';
-:UPDATE emp SET ename = 'ALLEN' WHERE ename = 'BEN';
+	UPDATE emp SET ename = 'BEN' WHERE ename = 'ALLEN';
+	:UPDATE emp SET ename = 'ALLEN' WHERE ename = 'BEN';
 #Increase the commission of all salesman by 10%of their salary.
-UPDATE emp SET comm = sal*0.1 WHERE job="salesman";
+	UPDATE emp SET comm = sal*0.1 WHERE job="salesman";
 #Add a column address of char(20).
-ALTER TABLE emp ADD address CHAR(20);
-:ALTER TABLE emp DROP COLUMN address;
+	ALTER TABLE emp ADD address CHAR(20);
+	:ALTER TABLE emp DROP COLUMN address;
 #Delete the employees whose empno is 7788.
-DELETE FROM emp WHERE empno = 7788;
+	DELETE FROM emp WHERE empno = 7788;
 #Rename the table EMP to EMPLOYEE
-RENAME TABLE emp TO employee;
-:RENAME TABLE employee TO emp;
+	RENAME TABLE emp TO employee;
+	:RENAME TABLE employee TO emp;
 #Display the deptno and no:of empls in each dept
-SELECT deptno, COUNT(empno) FROM emp GROUP BY deptno;
+	SELECT deptno, COUNT(empno) FROM emp GROUP BY deptno;
 #Display the jobs and no:of empls in each job
-SELECT job, COUNT(empno) FROM emp GROUP BY job;
+	SELECT job, COUNT(empno) FROM emp GROUP BY job;
 #Display the job and average sal of each job
-SELECT job, AVG(sal) FROM emp GROUP BY job;
+	SELECT job, AVG(sal) FROM emp GROUP BY job;
 #Display the department and maximum sal of each deptment
-SELECT deptno, MAX(sal) FROM emp GROUP BY deptno;
+	SELECT deptno, MAX(sal) FROM emp GROUP BY deptno;
 #Display the average salary , maximum salary and minimum salary for each department
-SELECT deptno, AVG(sal), MIN(sal), MAX(sal) 
-FROM emp 
-GROUP BY deptno;
+	SELECT deptno, AVG(sal), MIN(sal), MAX(sal) 
+	FROM emp 
+	GROUP BY deptno;
 #Display the job and no:of empls in each job where no:of empls less than 2
-SELECT job, COUNT(empno) FROM emp 
-GROUP BY job
-HAVING COUNT(empno) < 2;
+	SELECT job, COUNT(empno) FROM emp 
+	GROUP BY job
+	HAVING COUNT(empno) < 2;
 #Display the job and average sal of each department whose average salary >1200
-SELECT deptno, AVG(sal) FROM emp 
-GROUP BY deptno
-HAVING AVG(sal) > 1200;
+	SELECT deptno, AVG(sal) FROM emp 
+	GROUP BY deptno
+	HAVING AVG(sal) > 1200;
 #Display the deptno and no:of empls in each dept whose no:of empls is greater than 2.
-SELECT deptno, COUNT(empno) FROM emp  
-GROUP BY deptno
-HAVING COUNT(empno) > 2;
+	SELECT deptno, COUNT(empno) FROM emp  
+	GROUP BY deptno
+	HAVING COUNT(empno) > 2;
 #Display the average salary , maximum salary and minimum salary job wise
-SELECT MAX(sal), AVG(sal), MIN(sal) FROM emp 
-GROUP BY job;
+	SELECT MAX(sal), AVG(sal), MIN(sal) FROM emp 
+	GROUP BY job;
 #Display the department , and no:of empls in each department where no:of employees is greater than 2
-SELECT deptno, COUNT(empno)
-FROM emp 
-GROUP BY deptno
-HAVING COUNT(empno) > 2;
+	SELECT deptno, COUNT(empno)
+	FROM emp 
+	GROUP BY deptno
+	HAVING COUNT(empno) > 2;
 #Display Empno,ename,deptno,dname for all the employees
-SELECT empno, ename, emp.deptno, dname 
-FROM emp 
-INNER JOIN dept
-ON emp.deptno = dept.deptno;
+	SELECT empno, ename, emp.deptno, dname 
+	FROM emp 
+	INNER JOIN dept
+	ON emp.deptno = dept.deptno;
 #Display Empno,ename,deptno,dname for all the employees for those employees of deptno 10
-SELECT empno, ename, emp.deptno, dname
-FROM emp 
-INNER JOIN dept
-ON emp.deptno = dept.deptno
-WHERE emp.deptno = 10;
+	SELECT empno, ename, emp.deptno, dname
+	FROM emp 
+	INNER JOIN dept
+	ON emp.deptno = dept.deptno
+	WHERE emp.deptno = 10;
 #Display Empno,ename,sal,job,deptno,dname, loc for all the employees working as Analyst
-SELECT empno, ename, sal, job, emp.deptno, dname, loc 
-FROM emp 
-INNER JOIN dept
-ON emp.deptno = dept.deptno
-WHERE job="ANALYST";
+	SELECT empno, ename, sal, job, emp.deptno, dname, loc 
+	FROM emp 
+	INNER JOIN dept
+	ON emp.deptno = dept.deptno
+	WHERE job="ANALYST";
 #Display Empno,ename,sal,dname, loc for all the employees whose sal>2000
-SELECT empno, ename, sal, dname, loc 
-FROM emp 
-INNER JOIN dept
-ON emp.deptno = dept.deptno
-WHERE sal > 2000;
+	SELECT empno, ename, sal, dname, loc 
+	FROM emp 
+	INNER JOIN dept
+	ON emp.deptno = dept.deptno
+	WHERE sal > 2000;
 #Display Ename , sal, Dname ,loc for all employees who are working in “Dallas”
-SELECT empno, ename, dname, loc 
-FROM emp 
-INNER JOIN dept
-ON emp.deptno = dept.deptno
-WHERE loc = "DALLAS";
+	SELECT empno, ename, dname, loc 
+	FROM emp 
+	INNER JOIN dept
+	ON emp.deptno = dept.deptno
+	WHERE loc = "DALLAS";
 #Display Ename , sal, Dname ,loc for all employees who are working in “Research ”
-SELECT empno, ename, dname, loc 
-FROM emp 
-INNER JOIN dept
-ON emp.deptno = dept.deptno
-WHERE dname = "RESEARCH";
+	SELECT empno, ename, dname, loc 
+	FROM emp 
+	INNER JOIN dept
+	ON emp.deptno = dept.deptno
+	WHERE dname = "RESEARCH";
 #Display empno, Ename, Deptno, Dname for all the employees whose name starts with “J”
-SELECT empno, ename, emp.deptno, dname 
-FROM emp 
-INNER JOIN dept
-ON emp.deptno = dept.deptno
-WHERE ename LIKE "J%";
+	SELECT empno, ename, emp.deptno, dname 
+	FROM emp 
+	INNER JOIN dept
+	ON emp.deptno = dept.deptno
+	WHERE ename LIKE "J%";
 #Display Display empno, Ename, Deptno, Dname for all “Managers”
-SELECT empno, ename, emp.deptno, dname 
-FROM emp 
-INNER JOIN dept
-ON emp.deptno = dept.deptno
-WHERE job = "manager";
+	SELECT empno, ename, emp.deptno, dname 
+	FROM emp 
+	INNER JOIN dept
+	ON emp.deptno = dept.deptno
+	WHERE job = "manager";
 #Display Display empno, Ename, Deptno, Dname for all the employees whose comm is null
-SELECT empno, ename, emp.deptno, dname 
-FROM emp 
-INNER JOIN dept
-ON emp.deptno = dept.deptno
-WHERE comm IS NULL;
+	SELECT empno, ename, emp.deptno, dname 
+	FROM emp 
+	INNER JOIN dept
+	ON emp.deptno = dept.deptno
+	WHERE comm IS NULL;
 #Display Display empno, Ename, Deptno, Dname for all the employees whose sal in range 1000 to 2000
-SELECT empno, ename, emp.deptno, dname 
-FROM emp 
-INNER JOIN dept
-ON emp.deptno = dept.deptno
-WHERE sal BETWEEN 1000 AND 2000;
+	SELECT empno, ename, emp.deptno, dname 
+	FROM emp 
+	INNER JOIN dept
+	ON emp.deptno = dept.deptno
+	WHERE sal BETWEEN 1000 AND 2000;
 #--
