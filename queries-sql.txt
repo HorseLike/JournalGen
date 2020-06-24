@@ -43,8 +43,7 @@
 #List the emps who joined in January
 	SELECT * FROM emp WHERE MONTH(hiredate) = 1;
 #List the emps who joined in the month of which second character is ‘a’
--- January, March and May
-	SELECT * FROM emp WHERE MONTH(hiredate) IN (1,3,5) ; 
+	SELECT * FROM emp WHERE MONTHNAME(hiredate) LIKE "_a%" ; 
 #List the emps whose names having a character set ‘ll’ together
 	SELECT * FROM emp WHERE ename LIKE '%ll%';
 #List the emps those who joined in 80’s

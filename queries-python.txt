@@ -1,0 +1,427 @@
+# Write a function which accepts a integer n and finds out whether it is an Armstrong Number or not 
+def is_armstrong(n):
+    return "is armstrong" if n == sum(int(x)**3 for x in str(n)) else "not armstrong"
+
+:is_armstrong(371);is_armstrong(125) 
+# Write a function which accepts any number n and displays sum of even and odd digits of the number separately. 
+def sum_even_odd(a):
+    esum, osum = sum(x for x in a if x % 2 == 0),sum(x for x in a if x % 2 == 1)
+    return f"even: {esum} odd: {osum}"
+
+:sum_even_odd([2,4,6,1,3,5])
+
+# Write a function Prime(n) to check a given number passed as parameter is prime or not. if it is prime it returns True otherwise returns False
+import math
+
+def is_prime(n):
+    for x in range(2, int(math.sqrt(n)) + 1):
+        if n % x == 0: return False
+    else:
+        return True
+
+:is_prime(42);is_prime(17)
+# Write a function which returns the biggest and smallest elements in a list passed as the parameter and also returns the sum and difference between the biggest and smallest number 
+
+def foo(a):
+    return max(a), min(a), max(a) - min(a), max(a) + min(a) 
+
+:foo([1,2,3])
+
+# Write a function to check a given string is Palindrome or not. If it is Palindrome, the function returns y, otherwise n 
+def is_palindrome(s):
+    for i in range(0, len(s)//2):
+        if s[i] != s[len(s)-i-1]: return False
+    else: return True
+
+:is_palindrome("aibohphobia");is_palindrome("notpalindrome")
+
+# Write a function which accepts string as a parameter and count articles in the string 
+def foo(s):
+    return s.count(" a ") + s.count(" the ") + s.count(" an ")
+
+:foo("According to all known laws of aviation")
+
+
+# Write a function which accepts a string and counts total no of uppercases, lowercases, digits, spaces and special characters 
+
+def foo(s: str):
+    upper = lower = digits = spaces = special = 0
+
+    for c in s:
+        if c.isupper(): upper+=1
+        elif c.islower(): lower+=1
+        elif c.isdigit(): digits+=1
+        elif c.isspace(): spaces+=1
+        else: special+=1
+    return f"upper:{upper} lower: {lower} spaces:{spaces}, special: {special}"
+
+:foo("  there is no way a bee should be able to fly.")
+# Write a function which accepts a dictionary class_details with roll no as key and name, class and section ,marks as values and display all  details of a particular student by roll number 
+def foo(details, rollno):
+    try:
+        d = details.get(rollno)
+    except KeyError:
+        print("Not found")
+        return
+    print(f"{rollno:5}  {d[0]:15} {d[1]:4} {d[2]:2}")
+
+:/details = {1: ("Its wings are too", "2C", 99.99)}
+:foo(details, 1)
+
+# Write a Function which searches an element in a list by binary search 
+def search(a, term):
+    low = 0
+    high = len(a)-1
+    middle = (low + high)//2
+
+    while low < high:
+        if a[middle] == term:
+            return middle
+        elif a[middle] < term:
+            low = middle
+        else:
+            high = middle
+
+        middle = (low + high)//2
+
+    return -1
+:search([1,2,3,4,5], 4)
+
+# Write a function which accepts a list of numbers  and displays all elements using insertion sort in ascending order. 
+def insertion_sort(a):
+    for i in range(len(a)):
+        key = a[i]
+        j = i-1
+        while j >= 0 and key < a[j]:
+            a[j], a[j+1] = a[j+1], a[j]
+            j-=1
+
+:/a = [3,412,41,-12]
+:insertion_sort(a)
+:print(a)
+
+# Write a function which accepts a list of numbers  and displays all elements using  bubble sort in descending order. 
+
+def bubble_sort(a):
+    for i in range(len(a)-1):
+        for j in range(len(a)-1-i):
+            if a[j+1] < a[j]:
+                a[j+1], a[j] = a[j], a[j+1] 
+
+:/a = [3,412,41,-12]
+:bubble_sort(a)
+:print(a)
+
+# Write a recursive function to display Fibonacci Series of n terms 
+
+def show_fibs(seq_len):
+    def nthfib(n):
+        if n < 2: return n
+        return nthfib(n-1) + nthfib(n-2)
+    
+    for i in range(seq_len):
+        print(nthfib(i), end=" ")
+:/show_fibs(5)
+
+# Write a recursive function to find the product of 2 numbers 
+
+def product(a,b):
+    if b==0: return 0
+
+    return a + product(a, b-1)
+
+:product(6,17)
+
+# Write a recursive function to determine whether the given number is Prime or not 
+import math
+def is_prime(n, factor=2):
+    if n%factor == 0:
+        return False
+    if math.sqrt(n) <= n:
+        return True
+
+    return is_prime(n,factor + 1)
+
+:is_prime(3141);is_prime(31415)
+
+# Write a function which counts lines starting with H from the file ‘para.txt’ 
+PARA_TXT = """
+its fat little body off the ground.
+The bee, of course, flies anyway because bees don't care 
+what humans think is impossible.
+
+Yellow, black. Yellow, black.
+Yellow, black. Yellow, black.
+
+Ooh, black and yellow!
+Let's shake it up a little.
+
+Barry! Breakfast is ready!
+
+Ooming!
+
+Hang on a second.
+
+Hello?
+"""
+def foo():
+    counter = 0
+    with open("para.txt") as f:
+        for line in f:
+            if line[0]=='H':
+                counter += 1 
+    return counter
+
+:foo()
+
+# Write a function which counts the word ‘my’ from the file ‘data.txt’ 
+PARA_TXT = """
+its fat little body off the ground.
+The bee, of course, flies anyway because bees don't care 
+what humans think is impossible.
+
+Yellow, black. Yellow, black.
+Yellow, black. Yellow, black.
+
+Ooh, black and yellow!
+Let's shake it up a little.
+
+Barry! Breakfast is ready!
+
+Ooming!
+
+Hang on a second.
+
+Hello?
+"""
+def foo():
+    with open("para.txt") as f:
+        return f.read().count('my')
+
+:foo()
+
+# Write a function which counts all 3 letter words from the file ‘poem12a.txt’ 
+POEM12A_TXT = """
+- Barry?
+- Adam?
+
+- Can you believe this is happening?
+- I can't. I'll pick you up.
+
+Looking sharp.
+
+Use the stairs. Your father paid good money for those.
+  
+Sorry. I'm excited.
+  
+Here's the graduate. We're very proud of you, son.
+"""
+def foo():
+    with open("poem12a.txt") as f:
+        return f.read().count('my')
+
+:foo()
+# Write a function which counts no of uppercases, lowercases ,digits and spaces from the file ‘para.txt’ 
+PARA_TXT = """
+its fat little body off the ground.
+The bee, of course, flies anyway because bees don't care 
+what humans think is impossible.
+
+Yellow, black. Yellow, black.
+Yellow, black. Yellow, black.
+
+Ooh, black and yellow!
+Let's shake it up a little.
+
+Barry! Breakfast is ready!
+
+Ooming!
+
+Hang on a second.
+
+Hello?
+"""
+def foo():
+    with open("para.txt") as f:
+        upper = lower = digits = spaces = special = 0
+
+        for c in f.read():
+            if c.isupper(): upper+=1
+            elif c.islower(): lower+=1
+            elif c.isdigit(): digits+=1
+            elif c.isspace(): spaces+=1
+            else: special+=1
+        return f"upper:{upper} lower: {lower} spaces:{spaces}, special: {special}"
+
+:foo()
+
+# Write a function which copies all the lines from the file ‘para.txt’ which are not starting with vowels into another file ‘new.txt’ 
+
+def foo():
+    with open("para.txt") as f, open("new.txt", "w") as f2:
+        for line in f:
+            if line[0] in 'aeiouAEIOU': continue
+            f2.write(f.read())
+
+
+:/foo()
+:print(open("para.txt").read())
+:print(open("new.txt").read())
+
+# Write a function which copies the content of the file 'para.txt' by copying all the lowercase to lower.txt; uppercase to upper.txt; digits to digit.txt; other to other.txt 
+
+def foo():
+    with open("para.txt") as f, \
+            open("upper.txt", "w") as upper, \
+            open("digits.txt", "w") as digits, \
+            open("lower.txt", "w") as lower, \
+            open("spaces.txt", "w") as spaces, \
+            open("other.txt", "w") as other: 
+
+        for c in f.read():
+            if c.isupper(): upper.write(c)
+            elif c.islower(): lower.write(c)
+            elif c.isdigit(): digits.write(c)
+            elif c.isspace(): spaces.write(c)
+            else: other.write(c)
+
+:foo()
+
+# Write a function which searches for a specific word in the file ‘para.txt’ and displays the line which has that word. 
+PARA_TXT="""Three days grade school,
+three days high school.
+
+Those were awkward.
+
+Three days college. I'm glad I took
+a day and hitchhiked around the hive.
+
+You did come back different."""
+
+
+def search(word):
+    with open("para.txt") as f:
+        for line in f:
+            if word in line:
+                print(line)
+
+
+:search("hitchhiked")
+
+# Write a function which writes a list object into the file ‘list1.dat’ in the binary access mode 
+import pickle 
+def foo(a):
+    with open('list1.dat', 'wb') as f:
+        pickle.dump(a, f)
+
+:foo([1,2,3])
+
+# Write a function to approximate the value of pi using the random module.
+from random import random
+
+def calc_pi(n):
+    inside = 0
+    for i in range(n):
+        x,y = random(), random()
+        if x**2 + y**2 < 1: inside += 1
+
+    return 4*(inside/n)
+    
+:calc_pi(100000)
+
+# Write a function to square elements of a list using list comprehensions
+def foo(a):
+    return [x**2 for x in a]
+
+
+:foo([1,2,3,4,5])
+
+# Write a menu driven program for adding, updating ,searching, deleting and displaying the records using a list in the binary mode from the file ‘employee.dat’ 
+import pickle
+import os
+
+def display():
+    with open('employee.dat', 'rb') as f:
+        print('{:<8} {:<8} {:<8} {:<8}'.format('EMP NO', 'NAME', 'DEPT', 'SAL'))
+        
+        emp = pickle.load(f)
+        for row in emp:
+            print('{:<8} {:<8} {:<8} {:<8}'.format(row[0], row[1], row[2], row[3]))
+
+def add():
+    with open('employee.dat', 'rb+') as f:
+        eno = input('Enter employee no.: ')
+        name = input('Enter employee name: ')
+        dept = input('Enter employee department: ')
+        sal = input('Enter employee salary: ')
+        rows = pickle.load(f)
+        rows.append((eno, name, dept, sal))
+        f.seek(0)
+        pickle.dump(rows, f)
+        f.truncate()
+
+def update():
+    with open('employee.dat', 'rb+') as f:
+        eno = input('Enter emp no. of employee to be updated: ')
+        emps = pickle.load(f)
+        for i in range(len(emps)):
+            emp = emps[i]
+            if emp[0] == eno:
+                print('{:<8} {:<8} {:<8} {:<8}'.format('EMP NO', 'NAME', 'DEPT', 'SAL'))
+                print('{:<8} {:<8} {:<8} {:<8}'.format(emp[0], emp[1], emp[2], emp[3]))
+                name = input('Enter updated employee name: ')
+                dept = input('Enter updated employee department: ')
+                sal = input('Enter updated employee salary: ')
+                emps[i] = (eno, name, dept, sal)
+                f.seek(0)
+                pickle.dump(emps, f)
+                f.truncate()
+                print("updated employee")
+                return
+
+        print('Employee not found.')
+
+def delete():
+    f1 = open('employee.dat', 'rb')
+    eno = input("enter a number: ")
+    emps = pickle.load(f1)
+    for i in range(len(emps)):
+        if  emps[i][0] == eno:
+            del emps[i]
+            print("Deleted")
+            return
+    print('Employee not found.')
+
+def search():
+    with open('employee.dat', 'rb') as f:
+        eno = input('Enter emp no. to be searched: ')
+        emps = pickle.load(f)
+        for emp in emps:
+            if emp[0] == eno:
+                print('{:<8} {:<8} {:<8} {:<8}'.format('EMP NO', 'NAME', 'DEPT', 'SAL'))
+                print('{:<8} {:<8} {:<8} {:<8}'.format(emp[0], emp[1], emp[2], emp[3]))
+        else:
+            print('Employee not found.')
+def main():
+    while True:
+        print('1. Display employees')
+        print('2. Add an employee')
+        print('3. Delete an employee')
+        print('4. Update an employee')
+        print('5. Search for an employee')
+        c = input('Enter choice: ')
+        if c == '1':
+            display()
+        elif c == '2':
+            add()
+        elif c == '3':
+            delete()
+        elif c == '4':
+            update()
+        elif c == '5':
+            search()
+        c = input('Do you want to continue? (Y/N)').lower()
+        if c == 'n':
+            break
+:/main()
+#--
